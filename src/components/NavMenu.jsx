@@ -10,7 +10,7 @@ const NavMenu = () => {
   return (
     <nav className="bg-white ">
       <div >
-        <div className="flex justify-between h-16 relative">
+        <div className="flex justify-between h-16 relative ">
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
             <a href="#" className="text-gray-700 hover:text-indigo-600 transition">Home</a>
