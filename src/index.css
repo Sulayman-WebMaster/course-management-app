@@ -1,5 +1,19 @@
 @import 'tailwindcss';
 @import "tw-animate-css";
+/* custom css */
+
+.montserrat-base {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight:700;
+  font-style: normal;
+}
+.sofia-regular {
+  font-family: "Sofia", cursive;
+  font-weight: 600;
+  font-style: normal;
+}
+
 
 @custom-variant dark (&:is(.dark *));
 
