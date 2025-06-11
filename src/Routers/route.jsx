@@ -10,6 +10,7 @@ import Course from "../pages/Course";
 import EditCourses from "../pages/EditCourses";
 import Enrollment from "../pages/Enrollment";
 import MyCourses from "../pages/MyCourses";
+import Courses from "../pages/Courses";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -47,6 +48,10 @@ export const router = createBrowserRouter([
                 path: "edit-courses/:courseId",
                 element: <PrivateRoute><EditCourses/></PrivateRoute>
             },
+            {
+                path: "show-all",
+                element: <Courses/>
+            }
             
         ],
 

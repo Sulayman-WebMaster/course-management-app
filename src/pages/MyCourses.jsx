@@ -4,6 +4,8 @@ import useSecureAxios from '../Hooks/useSecureAxios';
 import { AuthContext } from '../Provider/AuthProvider';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import { toast } from 'react-toastify';
+import Lottie from 'lottie-react';
+import myCoursesAnimation from '../assests/mycourse-animation.json'
 
 const MyCourses = () => {
   const [courses, setCourses] = useState([]);
@@ -15,7 +17,7 @@ const MyCourses = () => {
 
   const fetchCourses = async () => {
     try {
-      const res = await axiosSecure.get(`/api/my-courses?email=${user.email}`);
+      const res = await axiosSecure.get(`/api/mycourses/email?email=${user.email}`);
       setCourses(res.data.courses || []);
     } catch (err) {
       toast.error('Failed to fetch your courses');
@@ -32,7 +34,7 @@ const MyCourses = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axiosSecure.delete(`/api/course/${id}?email=${user.email}`);
+      await axiosSecure.delete(`/api/course/${id}/email?email=${user.email}`);
       setCourses(prev => prev.filter(course => course._id !== id));
       toast.success('Course deleted');
     } catch (err) {
@@ -49,13 +51,14 @@ const MyCourses = () => {
       {loading ? (
         <p className="text-center text-gray-600">Loading...</p>
       ) : courses.length === 0 ? (
-        <div className="text-center text-gray-500 mt-20">
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/4076/4076549.png"
-            alt="No Courses"
-            className="w-32 mx-auto mb-4"
-          />
-          <p className="text-lg">You haven’t created any courses yet.</p>
+       <div className="flex flex-col items-center justify-center  text-center">
+          <Lottie
+            animationData={myCoursesAnimation}
+            loop={true}
+            className="w-100  h-100"
+            ></Lottie>
+          <h3 className="text-2xl font-semibold text-gray-700 mb-2">You haven't created any courses yet</h3>
+          <p className="text-gray-500">Make your course Today That will be help learner!</p>
         </div>
       ) : (
         <div className="overflow-x-auto shadow-md rounded-lg bg-white">
@@ -74,7 +77,7 @@ const MyCourses = () => {
                   <td className="px-6 py-4 text-sm text-gray-600">{course.description.slice(0, 60)}...</td>
                   <td className="px-6 py-4 flex justify-center gap-4">
                     <button
-                      onClick={() => navigate(`/dashboard/edit-course/${course._id}`)}
+                      onClick={() => navigate(`/edit-courses/${course._id}`)}
                       className="text-blue-600 hover:text-blue-800"
                       title="Edit"
                     >

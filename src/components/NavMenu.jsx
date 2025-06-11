@@ -29,8 +29,7 @@ const NavMenu = () => {
             <Link to="/add-course" className="text-gray-700 hover:text-[#FE7743] transition">Add Course</Link>
             <Link to="/my-enrollments" className="text-gray-700 hover:text-[#FE7743] transition">My Enrollments</Link>
             <Link to="/my-courses" className="text-gray-700 hover:text-[#FE7743] transition">My Courses</Link>
-            <Link to="/manage-courses" className="text-gray-700 hover:text-[#FE7743] transition">Manage Courses</Link>
-            <Link to="" className="text-gray-700 hover:text-[#FE7743] transition">Edit Course</Link>
+            <Link to="/show-all" className="text-gray-700 hover:text-[#FE7743] transition">All Courses</Link>
            
           </div>
           
@@ -82,10 +81,11 @@ const NavMenu = () => {
                                       </DropdownMenuItem>
                                   </DropdownMenuContent>
                               </DropdownMenu>
-          <a href="#" className="block px-3 py-2 rounded-md text-gray-900 hover:bg-gray-100">Home</a>
-          <a href="#" className="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">About</a>
-          <a href="#" className="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">Services</a>
-          <a href="#" className="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">Contact</a>
+              <Link to="/" className="text-gray-700 hover:text-[#FE7743] transition">Home</Link>
+            <Link to="/add-course" className="text-gray-700 hover:text-[#FE7743] transition">Add Course</Link>
+            <Link to="/my-enrollments" className="text-gray-700 hover:text-[#FE7743] transition">My Enrollments</Link>
+            <Link to="/my-courses" className="text-gray-700 hover:text-[#FE7743] transition">My Courses</Link>
+           
         
         </div>
       </div>
