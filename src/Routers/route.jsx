@@ -7,10 +7,9 @@ import NotFoundPage from "../pages/NotFoundPage";
 import AddCoursePage from "../pages/AddCourse";
 import PrivateRoute from "../Provider/PrivateRoute";
 import Course from "../pages/Course";
-import MyEnrollment from "../pages/MyEnrollment";
-import MyCourses from "../pages/MyCourses";
 import EditCourses from "../pages/EditCourses";
-import ManangeCourse from "../pages/ManangeCourse";
+import Enrollment from "../pages/Enrollment";
+import MyCourses from "../pages/MyCourses";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -38,7 +37,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "my-enrollments",
-                element: <PrivateRoute><MyEnrollment/></PrivateRoute>
+                element: <PrivateRoute><Enrollment/></PrivateRoute>
             },
             {
                 path: "my-courses",
@@ -48,10 +47,7 @@ export const router = createBrowserRouter([
                 path: "edit-courses/:courseId",
                 element: <PrivateRoute><EditCourses/></PrivateRoute>
             },
-            {
-               path: "manage-courses", 
-               element: <PrivateRoute><ManangeCourse/></PrivateRoute>
-            }
+            
         ],
 
 

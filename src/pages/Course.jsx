@@ -57,7 +57,7 @@ const Course = () => {
       setError('');
       setMessage('');
 
-      const res = await secureAxios.patch(`${import.meta.env.VITE_BASE_URI}/api/courses/enroll/${courseId}`, {});
+      const res = await secureAxios.patch(`${import.meta.env.VITE_BASE_URI}/api/courses/enroll/${courseId}/email?email=${user.email}`, {});
 
       setMessage(res.data.message);
       toast.success(res.data.message);
