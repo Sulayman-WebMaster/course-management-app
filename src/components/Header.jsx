@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <div>
       <div className="p-4 bg-white shadow-md flex items-center justify-between relative">
-        {/* Logo + Slogan */}
+       
         <div>
           <h1 className="sofia-regular text-3xl md:text-5xl">Shikhun</h1>
           <p className="text-[12px] md:text-base">Learn Skills from Anywhere.</p>

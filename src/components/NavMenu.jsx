@@ -1,8 +1,19 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router';
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+    DropdownMenu,
+    DropdownMenuTrigger,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu";
+import { AuthContext } from '../Provider/AuthProvider';
 
 const NavMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { user,handleLogout} = useContext(AuthContext);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -41,6 +52,33 @@ const NavMenu = () => {
       {/* Mobile Menu */}
       <div className={`md:hidden ${isOpen ? 'block' : 'hidden'} border-t absolute top-16 right-4 w-1/4 z-30 shadow-lg bg-white  `}>
         <div className="px-2 py-3 space-y-2">
+           <DropdownMenu >
+                                  <DropdownMenuTrigger asChild>
+                                      <Avatar className="cursor-pointer w-12 h-12">
+                                          <AvatarImage
+                                              src={user?.photoURL || "https://i.postimg.cc/WpB7mWdy/60111.jpg"}
+                                              alt={user?.displayName || "User"}
+                                          />
+                                          <AvatarFallback>{user?.displayName ? user.displayName[0] : "N"}</AvatarFallback>
+                                      </Avatar>
+                                  </DropdownMenuTrigger>
+          
+                                  <DropdownMenuContent className="w-56 mt-2 mr-28">
+                                      <DropdownMenuLabel>Account</DropdownMenuLabel>
+                                      <DropdownMenuSeparator />
+                                      <div className="px-4 py-2 text-sm">
+                                          <p className="font-medium">{user?.displayName || "Your Name"}</p>
+                                          <p className="text-gray-500">{user?.email}</p>
+                                      </div>
+                                      <DropdownMenuSeparator />
+                                      <DropdownMenuItem
+                                          onClick={handleLogout}
+                                          className="text-[#FE7743] cursor-pointer"
+                                      >
+                                          Logout
+                                      </DropdownMenuItem>
+                                  </DropdownMenuContent>
+                              </DropdownMenu>
           <a href="#" className="block px-3 py-2 rounded-md text-gray-900 hover:bg-gray-100">Home</a>
           <a href="#" className="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">About</a>
           <a href="#" className="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">Services</a>

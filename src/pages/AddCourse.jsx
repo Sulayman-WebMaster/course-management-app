@@ -13,13 +13,14 @@ const AddCoursePage = () => {
   const [imageURL, setImageURL] = useState('');
   const [duration, setDuration] = useState('');
   const [loading, setLoading] = useState(false);
+  const [totalSeats, setTotalSeats] = useState(10);
 
  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!title || !description || !imageURL || !duration) {
+    if (!title || !description || !imageURL || !duration || !totalSeats) {
       toast.error('Please fill in all fields.');
       return;
     }
@@ -31,6 +32,7 @@ const AddCoursePage = () => {
       description,
       imageURL,
       duration,
+      totalSeats,
       createdBy: {
         email: user.email,
         name: user.displayName || 'Anonymous',
@@ -119,6 +121,22 @@ const AddCoursePage = () => {
             placeholder="Enter course duration"
             required
           />
+        </div>
+
+        <div>
+            <label htmlFor="totalSeats" className="block font-medium mb-1">
+                Total Seats
+            </label>
+            <input
+                id="totalSeats"
+                type="number"
+                value={totalSeats}
+                onChange={e => setTotalSeats(e.target.value)}
+                className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#FE7743]"
+                placeholder="Enter total seats available"
+                min="10"
+                required
+            />
         </div>
 
         <button
