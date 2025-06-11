@@ -2,11 +2,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import HeroSlider from '../components/HeroSlider';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import Button from "../components/Button"
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import axios from 'axios';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
+import Lottie from 'lottie-react';
+import homeAnimation from '../assests/home-animation.json'
+import sectionAnimation from '../assests/section-animation.json';
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
@@ -78,7 +80,9 @@ const Home = () => {
                 <p className="text-sm text-gray-500 mt-1">Author Name: {course.createdBy?.name}</p>
               </CardContent>
               <CardFooter className="p-4">
-               <Button>View Details</Button>
+                <Link to={`/course/${course._id}`}>
+                  <Button>View Details</Button>
+                </Link>
               </CardFooter>
             </Card>
           ))}
@@ -101,45 +105,49 @@ const Home = () => {
                 <p className="text-sm text-gray-500 mt-1">Enrolled: {course.enrolledUsers?.length || 0}</p>
               </CardContent>
               <CardFooter className="p-4">
-                <Button className="w-full bg-green-600 hover:bg-green-700 text-white">Details</Button>
+                <Link to={`/course/${course._id}`}>
+                  <Button>View Details</Button>
+                </Link>
               </CardFooter>
             </Card>
           ))}
         </div>
       </section>
 
-      {/* Additional Sections: Community & Learning */}
-      <section className="py-14 px-6 max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10">
-        <img
-          src="/images/modern-learning.jpg"
-          alt="Modern Learning"
-          className="rounded-3xl shadow-xl md:w-1/2 object-cover"
-        />
-        <div>
-          <h2 className="text-4xl font-extrabold mb-4 text-gray-900">Modern Learning Experience</h2>
-          <p className="text-gray-700 text-lg leading-relaxed">
-            Dive into interactive courses designed with the latest educational technology. 
-            Experience live coding, quizzes, and real-time feedback to accelerate your skills.
-          </p>
-          <Button className="mt-6 bg-indigo-600 hover:bg-indigo-700 text-white">Explore Courses</Button>
-        </div>
-      </section>
+      <section className="py-16 px-6 max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-center gap-10 bg-gradient-to-br from-white to-blue-50 rounded-3xl shadow-lg">
+  <div className="w-full md:w-1/2">
+    <Lottie animationData={homeAnimation} loop className="w-full h-auto" />
+  </div>
+  <div className="w-full md:w-1/2 text-center md:text-left">
+    <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 leading-tight">Modern Learning Experience</h2>
+    <p className="text-gray-700 text-lg md:text-xl leading-relaxed mb-6">
+      Dive into interactive and immersive learning designed with cutting-edge technology. 
+      Engage in live coding, hands-on quizzes, and personalized real-time feedback. 
+      This is the next step in your learning journey — smarter, faster, and more fun.
+    </p>
+    <Button>
+      Explore Courses
+    </Button>
+  </div>
+</section>
 
-      <section className="py-14 px-6 max-w-5xl mx-auto flex flex-col-reverse md:flex-row items-center gap-10 bg-gray-100 rounded-3xl">
-        <div>
-          <h2 className="text-4xl font-extrabold mb-4 text-gray-900">Join Our Community</h2>
-          <p className="text-gray-700 text-lg leading-relaxed">
-            Connect with thousands of learners and experts. Share your progress, collaborate on projects,
-            and get support anytime you need it.
-          </p>
-          <Button className="mt-6 bg-pink-600 hover:bg-pink-700 text-white">Join Now</Button>
-        </div>
-        <img
-          src="/images/community.jpg"
-          alt="Community"
-          className="rounded-3xl shadow-xl md:w-1/2 object-cover"
-        />
-      </section>
+<section className="py-16 px-6 max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 bg-white backdrop-blur-xl rounded-3xl shadow-2xl my-16">
+  <div className="w-full md:w-1/2 text-center md:text-left">
+    <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 leading-tight">Join Our Learning Community</h2>
+    <p className="text-gray-700 text-lg md:text-xl leading-relaxed mb-6">
+      Collaborate with passionate learners and industry experts around the world. 
+      Share your journey, get mentorship, and grow your network — all within a supportive and thriving educational ecosystem.
+    </p>
+    <Button className="bg-pink-600 hover:bg-pink-700 text-white px-6 py-3 rounded-xl shadow-md transition-all duration-300 hover:scale-105">
+      Join Now
+    </Button>
+  </div>
+  <div className="w-full md:w-1/2">
+    <Lottie animationData={sectionAnimation} loop className="w-full h-auto" />
+  </div>
+</section>
+
+      
     </div>
   );
 };

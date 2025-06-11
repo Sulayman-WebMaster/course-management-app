@@ -20,7 +20,7 @@ const AddCoursePage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!title || !description || !imageURL || !duration || !totalSeats) {
+    if (!title || !description ||  !duration || !totalSeats) {
       toast.error('Please fill in all fields.');
       return;
     }
@@ -30,13 +30,14 @@ const AddCoursePage = () => {
     const payload = {
       title,
       description,
-      imageURL,
+      imageURL:imageURL || 'https://i.postimg.cc/HWFMBhBX/image.png',
       duration,
       totalSeats,
       createdBy: {
         email: user.email,
         name: user.displayName || 'Anonymous',
         uid: user?.uid,
+        photoURL: user.photoURL || 'https://i.postimg.cc/WpB7mWdy/60111.jpg'
       }
     };
 
@@ -104,7 +105,7 @@ const AddCoursePage = () => {
             onChange={e => setImageURL(e.target.value)}
             className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#FE7743]"
             placeholder="https://example.com/image.jpg"
-            required
+          
           />
         </div>
 
