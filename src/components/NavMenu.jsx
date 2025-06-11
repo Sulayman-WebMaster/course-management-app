@@ -13,10 +13,10 @@ const NavMenu = () => {
         <div className="flex justify-between h-16 relative ">
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#" className="text-gray-700 hover:text-indigo-600 transition">Home</a>
-            <a href="#" className="text-gray-700 hover:text-indigo-600 transition">About</a>
-            <a href="#" className="text-gray-700 hover:text-indigo-600 transition">Services</a>
-            <a href="#" className="text-gray-700 hover:text-indigo-600 transition">Contact</a>
+            <a href="#" className="text-gray-700 hover:text-[#FE7743] transition">Home</a>
+            <a href="#" className="text-gray-700 hover:text-[#FE7743] transition">About</a>
+            <a href="#" className="text-gray-700 hover:text-[#FE7743] transition">Services</a>
+            <a href="#" className="text-gray-700 hover:text-[#FE7743] transition">Contact</a>
           </div>
           
           {/* Mobile menu button */}

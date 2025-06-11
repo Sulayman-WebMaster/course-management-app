@@ -1,34 +1,30 @@
-import React from 'react'
-import NavMenu from './NavMenu'
-import Button from './Button'
+import React, { use } from 'react';
+import NavMenu from './NavMenu';
 
+import { Link } from 'react-router';
+import { AuthContext } from '../Provider/AuthProvider';
+import UserMenu from './UserMenu';
 
 const Header = () => {
- 
+  const { user } = use(AuthContext);
   return (
     <div>
-      <div className='p-4 bg-white shadow-md flex  items-center justify-between '>
+      <div className="p-4 bg-white shadow-md flex items-center justify-between relative">
+        {/* Logo + Slogan */}
         <div>
-          <h1 className='sofia-regular text-3xl md:text-5xl'>Shikhun</h1>
-      <p className=' text-[12px] md:text-base'>Learn Skills from Anywhere.</p>
+          <h1 className="sofia-regular text-3xl md:text-5xl">Shikhun</h1>
+          <p className="text-[12px] md:text-base">Learn Skills from Anywhere.</p>
         </div>
-        
+
+        {/* Nav Menu */}
+        <NavMenu />
+
+        {/* Authentication */}
+        <UserMenu/>
        
-        <NavMenu/> 
-
-        <div className='hidden md:flex items-center space-x-4'>
-          <button className='bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600'>
-            Login
-          </button>
-          <button className='ml-2 bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300'>
-            Register
-          </button>
-        </div>
-
       </div>
     </div>
+  );
+};
 
-  )
-}
-
-export default Header
+export default Header;

@@ -7,7 +7,7 @@ import {
   signInWithPopup,
   signOut,
   GoogleAuthProvider,
-  sendPasswordResetEmail,
+  GithubAuthProvider,
 } from 'firebase/auth';
 import app from '../utils/FirebaseApp.jsx';
 import { toast } from 'react-toastify';
@@ -26,7 +26,7 @@ const AuthProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-  const handleLogin = (email, password) => {
+  const loginUser = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
@@ -61,26 +61,29 @@ const AuthProvider = ({ children }) => {
       });
   };
 
-  const provider = new GoogleAuthProvider();
+  const googleProvider = new GoogleAuthProvider();
+  const GithubProvider = new GithubAuthProvider();
 
   const handleGoogleSignIn = () => {
     setLoading(true);
-    return signInWithPopup(auth, provider);
+    return signInWithPopup(auth, googleProvider);
+  };
+   const githubLogin = () => {
+      setLoading(true);
+    return signInWithPopup(auth, GithubProvider);
   };
 
-  function resetPassword(email) {
-    return  sendPasswordResetEmail(auth, email)
-      
-  }
+ 
 
   const authData = {
     user,
+    setUser,
     loading,
     createUser,
-    handleLogin,
+    loginUser,
     handleLogout,
     handleGoogleSignIn,
-    resetPassword,
+    githubLogin,
   };
 
   useEffect(() => {
