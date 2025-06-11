@@ -27,8 +27,9 @@ const NavMenu = () => {
           <div className="hidden md:flex items-center space-x-8">
             <Link to="/" className="text-gray-700 hover:text-[#FE7743] transition">Home</Link>
             <Link to="/add-course" className="text-gray-700 hover:text-[#FE7743] transition">Add Course</Link>
-            <a href="#" className="text-gray-700 hover:text-[#FE7743] transition">Services</a>
-            <a href="#" className="text-gray-700 hover:text-[#FE7743] transition">Contact</a>
+            <Link to="/my-courses" className="text-gray-700 hover:text-[#FE7743] transition">My Courses</Link>
+            <Link to="/my-enrollments" className="text-gray-700 hover:text-[#FE7743] transition">My Enrollments</Link>
+           
           </div>
           
           {/* Mobile menu button */}
