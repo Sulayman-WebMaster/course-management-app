@@ -1,10 +1,12 @@
 import React, { useContext, useState } from 'react';
-import axios from 'axios';
+
 import { AuthContext } from '../Provider/AuthProvider'; 
 import { toast } from 'react-toastify';
+import useSecureAxios from '../Hooks/useSecureAxios';
 
 const AddCoursePage = () => {
   const { user } = useContext(AuthContext);
+  const axios = useSecureAxios(); 
 
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -33,13 +35,11 @@ const AddCoursePage = () => {
         email: user.email,
         name: user.displayName || 'Anonymous',
         uid: user?.uid,
-      },
-      createdAt: new Date().toISOString(),
-      
+      }
     };
 
     try {
-      const response = await axios.post('https://your-backend-api.com/api/courses', payload);
+      const response = await axios.post(`/api/add-course/email?email=${user.email}`, payload);
 
       if (response.status === 201) {
         toast.success('Course added successfully!');
