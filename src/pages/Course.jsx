@@ -13,6 +13,7 @@ import {
 } from 'react-icons/fa';
 import { MdMarkEmailUnread } from "react-icons/md";
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router';
 
 const Course = () => {
   const { courseId } = useParams();
@@ -22,7 +23,7 @@ const Course = () => {
   const [enrollLoading, setEnrollLoading] = useState(false);
   const [error, setError] = useState(null);
   const [message, setMessage] = useState('');
-
+  const navigate = useNavigate();
 
 
 
@@ -70,7 +71,7 @@ const Course = () => {
     }
   };
   if (loading) return <div className="text-center py-10">Loading course...</div>;
-  if (error) return <div className="text-center text-red-600 py-10">{error}</div>;
+  if (error) navigate('/', { replace: true });
 
   const isUserEnrolled = course.enrolledUsers.some(u => u.uid === user?.uid);
   const isFull = course.enrolledUsers.length >= course.totalSeats;
