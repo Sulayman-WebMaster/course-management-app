@@ -3,7 +3,7 @@ import { useParams } from 'react-router';
 import axios from 'axios';
 import Button from '../components/Button';
 import { AuthContext } from '../Provider/AuthProvider';
-import useSecureAxios from '../Hooks/useSecureAxios'; 
+import useSecureAxios from '../Hooks/useSecureAxios';
 import {
   FaChalkboardTeacher,
   FaClock,
@@ -23,6 +23,10 @@ const Course = () => {
   const [error, setError] = useState(null);
   const [message, setMessage] = useState('');
 
+
+
+
+
   const fetchCourse = async () => {
     setLoading(true);
     try {
@@ -34,39 +38,37 @@ const Course = () => {
     setLoading(false);
   };
 
+
+
   useEffect(() => {
     fetchCourse();
   }, [courseId]);
 
- 
 
-const secureAxios = useSecureAxios(); 
 
-const handleToggleEnrollment = async () => {
-  if (!user) {
-    setError('You must be logged in to enroll');
-    toast.error('You must be logged in to enroll');
-    return;
-  }
+  const secureAxios = useSecureAxios();
 
-  try {
-    setEnrollLoading(true);
-    setError('');
-    setMessage('');
+  const handleToggleEnrollment = async () => {
 
-    const res = await secureAxios.patch(`${import.meta.env.VITE_BASE_URI}/api/courses/enroll/${courseId}`, {});
-    
-    setMessage(res.data.message);
-    toast.success(res.data.message);
-    setCourse(res.data.course);
-  } catch (err) {
-    const errorMsg = err.response?.data?.error || 'Something went wrong';
-    setError(errorMsg);
-    toast.error(errorMsg);
-  } finally {
-    setEnrollLoading(false);
-  }
-};
+
+    try {
+      setEnrollLoading(true);
+      setError('');
+      setMessage('');
+
+      const res = await secureAxios.patch(`${import.meta.env.VITE_BASE_URI}/api/courses/enroll/${courseId}`, {});
+
+      setMessage(res.data.message);
+      toast.success(res.data.message);
+      setCourse(res.data.course);
+    } catch (err) {
+      const errorMsg = err.response?.data?.error || 'Something went wrong';
+      setError(errorMsg);
+      toast.error(errorMsg);
+    } finally {
+      setEnrollLoading(false);
+    }
+  };
   if (loading) return <div className="text-center py-10">Loading course...</div>;
   if (error) return <div className="text-center text-red-600 py-10">{error}</div>;
 
@@ -99,29 +101,40 @@ const handleToggleEnrollment = async () => {
             </p>
             <p className="flex items-center gap-2">
               <FaChalkboardTeacher className="text-[#FE7743]" />
-              <strong>Instructor:</strong> {course.createdBy.name} 
+              <strong>Instructor:</strong> {course.createdBy.name}
             </p>
             <p className="flex items-center gap-2">
-              <MdMarkEmailUnread   className="text-[#FE7743]" />
+              <MdMarkEmailUnread className="text-[#FE7743]" />
               <strong>Contact:</strong>  {course.createdBy.email}
             </p>
           </div>
 
-          {message && <p className="text-green-600">{message}</p>}
-          {error && <p className="text-red-600">{error}</p>}
+          {message && <p className="text-green-600 mb-2">{message}</p>}
+          {error && <p className="text-red-600 mb-2">{error}</p>}
 
+          {/* Additional Feedback */}
+          {enrollLoading && (
+            <p className="text-blue-600 mb-2">Processing your request...</p>
+          )}
+          {!user && (
+            <p className="text-red-600 mb-2">You must be logged in to enroll in a course.</p>
+          )}
+          {!isUserEnrolled && isFull && (
+            <p className="text-red-600 mb-2">This course is full. No seats available.</p>
+          )}
           <Button
             onClick={handleToggleEnrollment}
-            disabled={enrollLoading || (!isUserEnrolled && isFull)}
-            className={`px-6 py-3 rounded-xl text-white font-semibold flex items-center gap-2 shadow-lg transition duration-300 ease-in-out transform hover:scale-105 ${
-              isUserEnrolled
+            disabled={enrollLoading || (!isUserEnrolled && isFull) || !user}
+            className={`px-6 py-3 rounded-xl text-white font-semibold flex items-center gap-2 shadow-lg transition duration-300 ease-in-out transform hover:scale-105 ${isUserEnrolled
                 ? 'bg-red-600 hover:bg-red-700'
                 : isFull
-                ? 'bg-gray-400 cursor-not-allowed'
-                : 'bg-[#FE7743] hover:bg-orange-600'
-            }`}
+                  ? 'bg-gray-400'
+                  : 'bg-[#FE7743] hover:bg-orange-600'
+              }`}
           >
-            {enrollLoading ? 'Processing...' : isUserEnrolled ? (
+            {enrollLoading ? (
+              'Processing...'
+            ) : isUserEnrolled ? (
               <>
                 <FaUserTimes />
                 Unenroll
@@ -135,6 +148,9 @@ const handleToggleEnrollment = async () => {
               </>
             )}
           </Button>
+
+
+
         </div>
       </div>
     </div>

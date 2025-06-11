@@ -1,6 +1,6 @@
 import React from "react";
 
-const Button = ({ children, onClick }) => {
+const Button = ({ children, onClick, disabled = false }) => {
   return (
     <div className="relative inline-flex group">
       {/* Shadow Offset Layer outside button */}
@@ -21,14 +21,17 @@ const Button = ({ children, onClick }) => {
       <button
         type="button"
         onClick={onClick}
-        className="
-          relative flex items-center justify-center
-          bg-[#FE7743] border-2 border-[#111] rounded-lg
-          text-[#111] font-[Inter,sans-serif] text-[16px] leading-[24px]
-          h-[48px] px-[25px] md:px-[40px]
-          select-none cursor-pointer outline-none
-          active:bg-[#ffdeda] transition-colors duration-200
-        "
+        disabled={disabled}
+        className={`
+  relative flex items-center justify-center
+  border-2 border-[#111] rounded-lg
+  font-[Inter,sans-serif] text-[16px] leading-[24px]
+  h-[48px] px-[25px] md:px-[40px]
+  select-none outline-none
+  transition-colors duration-200
+  ${disabled ? 'bg-gray-400 text-white opacity-50 cursor-not-allowed' : 'bg-[#FE7743] text-[#111] cursor-pointer active:bg-[#ffdeda]'}
+`}
+
       >
         {children}
       </button>
