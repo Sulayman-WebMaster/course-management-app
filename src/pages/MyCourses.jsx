@@ -51,7 +51,7 @@ const MyCourses = () => {
       <h2 className="text-3xl font-bold mb-6 text-[#FE7743]">My Created Courses</h2>
 
       {loading ? (
-        <p className="text-center text-gray-600">Loading...</p>
+        <span className="loading loading-spinner loading-lg"></span>
       ) : courses.length === 0 ? (
        <div className="flex flex-col items-center justify-center  text-center">
           <Lottie

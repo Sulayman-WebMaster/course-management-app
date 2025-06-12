@@ -41,7 +41,7 @@ const Enrollment = () => {
     }
   };
 
-  if (loading) return <p className="text-center py-10">Loading...</p>;
+  if (loading) return <span className="loading loading-spinner loading-lg"></span>
 
   return (
     <div className=" max-w-6xl mx-auto px-4 py-8">

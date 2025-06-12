@@ -72,7 +72,7 @@ const Course = () => {
       setEnrollLoading(false);
     }
   };
-  if (loading) return <div className="text-center py-10">Loading course...</div>;
+  if (loading) return <span className="loading loading-spinner loading-lg"></span>
   if (error) navigate('/', { replace: true });
 
   const isUserEnrolled = course.enrolledUsers.some(u => u.uid === user?.uid);

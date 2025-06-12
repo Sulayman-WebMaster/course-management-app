@@ -62,7 +62,7 @@ const EditCourses = () => {
   };
 
   if (loading) {
-    return <p className="text-center py-10">Loading...</p>;
+    return <span className="loading loading-spinner loading-lg"></span>
   }
 
   return (
