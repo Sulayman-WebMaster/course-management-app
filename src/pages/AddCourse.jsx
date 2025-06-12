@@ -1,8 +1,9 @@
 import React, { useContext, useState } from 'react';
-
 import { AuthContext } from '../Provider/AuthProvider'; 
 import { toast } from 'react-toastify';
 import useSecureAxios from '../Hooks/useSecureAxios';
+import DynamicTitle from '../components/DynamicTitle';
+
 
 const AddCoursePage = () => {
   const { user } = useContext(AuthContext);
@@ -59,9 +60,11 @@ const AddCoursePage = () => {
       setLoading(false);
     }
   };
+  
 
   return (
     <div className="max-w-xl mx-auto p-6 bg-white shadow-md rounded-md mt-10">
+       <DynamicTitle title="Create a new Course" />
       <h2 className="text-3xl font-semibold mb-6 text-[#FE7743]">Add New Course</h2>
       <form onSubmit={handleSubmit} className="space-y-5">
         <div>

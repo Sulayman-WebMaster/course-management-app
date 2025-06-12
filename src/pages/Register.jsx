@@ -11,6 +11,7 @@ import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { AuthContext } from '../Provider/AuthProvider';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import DynamicTitle from '../components/DynamicTitle';
 
 const Register = () => {
   const { createUser, user, setUser } = useContext(AuthContext);
@@ -90,6 +91,7 @@ const Register = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+      <DynamicTitle title="Register new account" />
       <Card className="w-full max-w-md shadow-lg">
         <CardHeader>
           <CardTitle className="text-2xl text-center">Create Your Account</CardTitle>

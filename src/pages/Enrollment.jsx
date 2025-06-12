@@ -6,6 +6,7 @@ import { FaTrash } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import Lottie from 'lottie-react';
 import EnrollmentAnimation from '../assests/enrollment-page.json'; 
+import DynamicTitle from '../components/DynamicTitle';
 const Enrollment = () => {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -44,6 +45,7 @@ const Enrollment = () => {
 
   return (
     <div className=" max-w-6xl mx-auto px-4 py-8">
+      <DynamicTitle title="Enroll new courses" />
       <h2 className="text-4xl font-bold mb-8 text-[#FE7743] text-center">My Enrolled Courses</h2>
 
       {courses.length === 0 ? (

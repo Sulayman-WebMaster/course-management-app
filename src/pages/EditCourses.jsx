@@ -4,6 +4,7 @@ import useSecureAxios from '../Hooks/useSecureAxios';
 import { AuthContext } from '../Provider/AuthProvider';
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import DynamicTitle from '../components/DynamicTitle';
 
 const EditCourses = () => {
   const { courseId } = useParams();
@@ -66,6 +67,8 @@ const EditCourses = () => {
 
   return (
     <div className="max-w-3xl mx-auto p-6 bg-white shadow-md rounded-lg mt-10">
+      <DynamicTitle title="Edited your courses" />
+
       <h2 className="text-2xl font-bold mb-6 text-[#FE7743]">Edit Course</h2>
 
       <form onSubmit={handleSubmit} className="space-y-4">

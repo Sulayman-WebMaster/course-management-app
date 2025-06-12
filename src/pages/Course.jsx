@@ -14,6 +14,8 @@ import {
 import { MdMarkEmailUnread } from "react-icons/md";
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router';
+import DynamicTitle from '../components/DynamicTitle';
+
 
 const Course = () => {
   const { courseId } = useParams();
@@ -78,6 +80,7 @@ const Course = () => {
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-16">
+         <DynamicTitle title={`${course.title}`} />
       <div className="flex flex-col md:flex-row gap-10">
         <div className="md:w-1/2">
           <img

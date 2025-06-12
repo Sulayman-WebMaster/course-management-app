@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import DynamicTitle from '../components/DynamicTitle';
 
 const Courses = () => {
   const [courses, setCourses] = useState([]);
@@ -17,6 +18,8 @@ const Courses = () => {
 
   return (
     <div className="max-w-6xl mx-auto p-6">
+      <DynamicTitle title="all courses" />
+
       <h2 className="text-3xl font-bold mb-6 text-[#FE7743]">All Courses</h2>
       {courses.length === 0 ? (
         <p className="text-gray-600">No courses available.</p>

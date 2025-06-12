@@ -7,6 +7,7 @@ import { FaEye, FaEyeSlash, FaGoogle, FaGithub } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../Provider/AuthProvider';
+import DynamicTitle from '../components/DynamicTitle';
 
 const Login = () => {
   const { loginUser, handleGoogleSignIn, githubLogin,setUser } = useContext(AuthContext);
@@ -18,6 +19,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const from = location.state?.from?.pathname || '/';
+  
 
   const togglePassword = () => setShowPassword(!showPassword);
 
@@ -67,6 +69,7 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+      <DynamicTitle title="Login your account" />
       <Card className="w-full max-w-md shadow-lg">
         <CardHeader>
           <CardTitle className="text-2xl text-center">

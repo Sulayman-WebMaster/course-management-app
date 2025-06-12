@@ -6,6 +6,7 @@ import { FaEdit, FaTrash } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import Lottie from 'lottie-react';
 import myCoursesAnimation from '../assests/mycourse-animation.json'
+import DynamicTitle from '../components/DynamicTitle';
 
 const MyCourses = () => {
   const [courses, setCourses] = useState([]);
@@ -46,6 +47,7 @@ const MyCourses = () => {
 
   return (
     <div className="max-w-6xl mx-auto p-6">
+      <DynamicTitle title="All Your courses " />
       <h2 className="text-3xl font-bold mb-6 text-[#FE7743]">My Created Courses</h2>
 
       {loading ? (

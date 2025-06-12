@@ -9,6 +9,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lottie from 'lottie-react';
 import homeAnimation from '../assests/home-animation.json'
 import sectionAnimation from '../assests/section-animation.json';
+import DynamicTitle from '../components/DynamicTitle';
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
@@ -61,6 +62,7 @@ const Home = () => {
 
   return (
     <div>
+      <DynamicTitle title="Home - Learn with Us" />
       <HeroSlider />
 
       {/* Latest Courses Section */}
