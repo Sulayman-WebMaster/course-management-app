@@ -1,10 +1,9 @@
 import React from "react";
 import Slider from "react-slick";
 import { motion } from "framer-motion";
-
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Button from "./Button";
+
 
 const slides = [
   {
@@ -51,7 +50,7 @@ const HeroSlider = () => {
   };
 
   return (
-    <section className="relative w-full h-[400px] my-5 md:h-[600px]">
+    <section className="relative w-full h-[400px]  md:h-[600px]">
       <Slider {...settings} className="h-full">
         {slides.map(({ title, subtitle, bgImage }, idx) => (
           <div key={idx} className="relative h-[400px] md:h-[600px]">
@@ -62,7 +61,7 @@ const HeroSlider = () => {
             />
 
             {/* Content */}
-            <div className="relative z-20 px-6 md:px-12 h-full flex flex-col justify-center max-w-4xl text-white">
+            <div className="relative z-20 px-6 md:px-12 h-full flex flex-col justify-center max-w-4xl open-sans-bold text-white">
               <motion.h2
                 className="text-3xl md:text-6xl font-bold mb-4"
                 initial="hidden"
@@ -70,7 +69,7 @@ const HeroSlider = () => {
                 variants={titleAnim}
                 key={`title-${idx}`}
               >
-                {title}
+                {title.toUpperCase()}
               </motion.h2>
               <motion.p
                 className="text-lg md:text-2xl max-w-xl"
