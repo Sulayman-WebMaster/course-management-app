@@ -1,96 +1,73 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router';
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-    DropdownMenu,
-    DropdownMenuTrigger,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-} from "@/components/ui/dropdown-menu";
 import { AuthContext } from '../Provider/AuthProvider';
+import Button from './Button';
+import UserMenu from './UserMenu';
 
 const NavMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { user,handleLogout} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
   return (
-    <nav className="bg-white ">
+    <nav>
       <div >
-        <div className="flex justify-between h-16 relative ">
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="text-gray-700 hover:text-[#FE7743] transition">Home</Link>
-            <Link to="/add-course" className="text-gray-700 hover:text-[#FE7743] transition">Add Course</Link>
-            <Link to="/my-enrollments" className="text-gray-700 hover:text-[#FE7743] transition">My Enrollments</Link>
-            <Link to="/my-courses" className="text-gray-700 hover:text-[#FE7743] transition">My Courses</Link>
-            <Link to="/show-all" className="text-gray-700 hover:text-[#FE7743] transition">All Courses</Link>
-           
+        <div className="flex  justify-between h-16 relative ">
+         
+          <div className="hidden md:flex md:text-[14px] lg:text-base items-center space-x-8">
+            <Link to="/" className="text-gray-700   hover:text-[#FE7743] transition">Home</Link>
+            <Link to="/add-course" className="text-gray-700 hover:text-[#FE7743] transition">create Course</Link>
+            <Link to="/my-enrollments" className="text-gray-700 hover:text-[#FE7743] transition">Enrollments</Link>
+            <Link to="/my-courses" className="text-gray-700 hover:text-[#FE7743] transition">Courses</Link>
+            <Link to="/show-all" className="text-gray-700 hover:text-[#FE7743] transition">Browse Courses</Link>
           </div>
-          
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
-            <button 
+          <div className="flex items-center md:hidden ">
+            <button
               onClick={toggleMenu}
               className="focus:outline-none"
               aria-label="Toggle menu"
             >
-              {/* Animated Hamburger Icon */}
+           
               <div className="w-6 h-6 relative">
                 <span className={`block absolute h-0.5 w-6 bg-current transform transition duration-300 ease-in-out ${isOpen ? 'rotate-45 top-3' : 'top-1'}`}></span>
                 <span className={`block absolute h-0.5 w-6 bg-current transform transition duration-300 ease-in-out ${isOpen ? 'opacity-0' : 'top-3'}`}></span>
                 <span className={`block absolute h-0.5 w-6 bg-current transform transition duration-300 ease-in-out ${isOpen ? '-rotate-45 top-3' : 'top-5'}`}></span>
               </div>
             </button>
+             
           </div>
         </div>
       </div>
-      
-      {/* Mobile Menu */}
-      <div className={`md:hidden ${isOpen ? 'block' : 'hidden'} border-t absolute top-16 right-4 w-1/4 z-30 shadow-lg bg-white  `}>
+
+    
+      <div className={`md:hidden ${isOpen ? 'block' : 'hidden'} border-t absolute top-16 right-6 w-1/2 z-30 shadow-lg bg-white rounded-md  `}>
         <div className="px-2 py-3 space-y-2">
-           <DropdownMenu >
-                                  <DropdownMenuTrigger asChild>
-                                      <Avatar className="cursor-pointer w-12 h-12">
-                                          <AvatarImage
-                                              src={user?.photoURL || "https://i.postimg.cc/WpB7mWdy/60111.jpg"}
-                                              alt={user?.displayName || "User"}
-                                          />
-                                          <AvatarFallback>{user?.displayName ? user.displayName[0] : "N"}</AvatarFallback>
-                                      </Avatar>
-                                  </DropdownMenuTrigger>
-          
-                                  <DropdownMenuContent className="w-56 mt-2 mr-28">
-                                      <DropdownMenuLabel>Account</DropdownMenuLabel>
-                                      <DropdownMenuSeparator />
-                                      <div className="px-4 py-2 text-sm">
-                                          <p className="font-medium">{user?.displayName || "Your Name"}</p>
-                                          <p className="text-gray-500">{user?.email}</p>
-                                      </div>
-                                      <DropdownMenuSeparator />
-                                      <DropdownMenuItem
-                                          onClick={handleLogout}
-                                          className="text-[#FE7743] cursor-pointer"
-                                      >
-                                          Logout
-                                      </DropdownMenuItem>
-                                  </DropdownMenuContent>
-                              </DropdownMenu>
-              <Link to="/" className="text-gray-700 hover:text-[#FE7743] transition">Home</Link>
-            <Link to="/add-course" className="text-gray-700 hover:text-[#FE7743] transition">Add Course</Link>
-            <Link to="/my-enrollments" className="text-gray-700 hover:text-[#FE7743] transition">My Enrollments</Link>
-            <Link to="/my-courses" className="text-gray-700 hover:text-[#FE7743] transition">My Courses</Link>
-           
-        
+          {user? (<UserMenu display={" block md:hidden"}/>) : (
+            <div className="relative z-10">
+                    <div className="relative  md:flex flex-col  lg:flex-row  items-center space-x-4  ">
+                        <Link to="/login">
+                            <Button onClick={toggleMenu}>Login</Button>
+                        </Link>
+                        <Link to="/register">
+                            <Button onClick={toggleMenu} >Register</Button>
+                        </Link>
+                    </div>
+                </div>
+          )}
+         <div className='flex flex-col space-y-2 mt-4'>
+          <Link to="/" className="text-gray-700 hover:text-[#FE7743] transition">Home</Link>
+            <Link to="/add-course" className="text-gray-700 hover:text-[#FE7743] transition">create Course</Link>
+            <Link to="/my-enrollments" className="text-gray-700 hover:text-[#FE7743] transition">Enrollments</Link>
+            <Link to="/my-courses" className="text-gray-700 hover:text-[#FE7743] transition">Courses</Link>
+            <Link to="/show-all" className="text-gray-700 hover:text-[#FE7743] transition">Browse Courses</Link>
+         </div>
         </div>
       </div>
     </nav>
-  ); 
+  );
 };
 
 export default NavMenu;

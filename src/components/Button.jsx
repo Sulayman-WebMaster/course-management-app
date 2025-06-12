@@ -28,7 +28,7 @@ const Button = ({ children, onClick, disabled = false }) => {
   font-[Inter,sans-serif] text-[16px] leading-[24px]
   h-[48px] px-[25px] md:px-[40px]
   select-none outline-none
-  transition-colors duration-200
+  transition-colors duration-200 mb-2
   ${disabled ? 'bg-gray-400 text-white opacity-50 cursor-not-allowed' : 'bg-[#FE7743] text-[#111] cursor-pointer active:bg-[#ffdeda]'}
 `}
 
