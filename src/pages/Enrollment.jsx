@@ -84,7 +84,7 @@ const Enrollment = () => {
                     onClick={() => setDeletingId(course._id)}
                     className="text-white bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg flex items-center gap-2 text-sm"
                   >
-                    <FaTrash /> Unenroll
+                    <FaTrash /> Remove Enrollment
                   </button>
                 </div>
               </div>

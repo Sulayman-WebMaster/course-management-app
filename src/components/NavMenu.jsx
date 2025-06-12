@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../Provider/AuthProvider';
 import Button from './Button';
 import UserMenu from './UserMenu';
@@ -18,11 +18,11 @@ const NavMenu = () => {
         <div className="flex  justify-between h-16 relative ">
          
           <div className="hidden md:flex md:text-[14px] lg:text-base items-center space-x-8">
-            <Link to="/" className="text-gray-700   hover:text-[#FE7743] transition">Home</Link>
-            <Link to="/add-course" className="text-gray-700 hover:text-[#FE7743] transition">create Course</Link>
-            <Link to="/my-enrollments" className="text-gray-700 hover:text-[#FE7743] transition">Enrollments</Link>
-            <Link to="/my-courses" className="text-gray-700 hover:text-[#FE7743] transition">Courses</Link>
-            <Link to="/show-all" className="text-gray-700 hover:text-[#FE7743] transition">Browse Courses</Link>
+            <NavLink to="/" className="text-gray-700   hover:text-[#FE7743] transition">Home</NavLink>
+            <NavLink to="/add-course" className="text-gray-700 hover:text-[#FE7743] transition">Create Course</NavLink>
+            <NavLink to="/my-enrollments" className="text-gray-700 hover:text-[#FE7743] transition">Enrollments</NavLink>
+            <NavLink to="/my-courses" className="text-gray-700 hover:text-[#FE7743] transition">Courses</NavLink>
+            <NavLink to="/show-all" className="text-gray-700 hover:text-[#FE7743] transition">Browse Courses</NavLink>
           </div>
           <div className="flex items-center md:hidden ">
             <button

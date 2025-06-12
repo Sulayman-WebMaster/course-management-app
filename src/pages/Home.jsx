@@ -95,6 +95,7 @@ const Home = () => {
               </CardFooter>
             </Card>
           ))}
+        
         </div>
       </section>
 
@@ -121,6 +122,7 @@ const Home = () => {
             </Card>
           ))}
         </div>
+          
       </section>
 
       <section className="py-16 px-6 max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center gap-10 bg-gradient-to-br from-white to-blue-50 rounded-3xl shadow-lg">
@@ -134,9 +136,11 @@ const Home = () => {
             Engage in live coding, hands-on quizzes, and personalized real-time feedback. 
             This is the next step in your learning journey — smarter, faster, and more fun.
           </p>
-          <Button>
+           <Link to="/show-all">
+            <Button>
             Explore Courses
           </Button>
+           </Link>
         </div>
       </section>
 
@@ -147,9 +151,12 @@ const Home = () => {
             Collaborate with passionate learners and industry experts around the world. 
             Share your journey, get mentorship, and grow your network — all within a supportive and thriving educational ecosystem.
           </p>
-          <Button className="bg-pink-600 hover:bg-pink-700 text-white px-6 py-3 rounded-xl shadow-md transition-all duration-300 hover:scale-105">
-            Join Now
-          </Button>
+         <a href="https://www.facebook.com/" target='_blank' rel="noopener noreferrer">
+            <Button>
+              Join Now
+            </Button>
+         
+         </a>
         </div>
         <div className="w-full md:w-1/2">
           <Lottie animationData={sectionAnimation} loop className="w-full h-auto" />

@@ -11,7 +11,7 @@ import {
   FaUserPlus,
   FaUserTimes,
 } from 'react-icons/fa';
-import { MdMarkEmailUnread } from "react-icons/md";
+import { MdCheckCircle, MdMarkEmailUnread } from "react-icons/md";
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router';
 import DynamicTitle from '../components/DynamicTitle';
@@ -140,8 +140,8 @@ const Course = () => {
               'Processing...'
             ) : isUserEnrolled ? (
               <>
-                <FaUserTimes />
-                Unenroll
+               <MdCheckCircle className='text-2xl mr-2' />
+                Enrolled
               </>
             ) : isFull ? (
               'No seats left'
