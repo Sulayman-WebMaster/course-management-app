@@ -19,7 +19,6 @@ const Enrollment = () => {
       const res = await axiosSecure.get(`/api/myEnrollments/email?email=${user.email}`);
       setCourses(res.data.courses || []);
     } catch (err) {
-      toast.error('Failed to fetch courses');
     } finally {
       setLoading(false);
     }
