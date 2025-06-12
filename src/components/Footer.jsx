@@ -25,17 +25,17 @@ const Footer = () => {
           <h3 className="text-white text-lg font-semibold mb-6">Quick Links</h3>
           <ul className="space-y-3">
             <li>
-              <a href="#" className="hover:text-indigo-400 transition">
+              <a href="#" className="hover:text-[#FE7743] transition">
                 Home
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-indigo-400 transition">
+              <a href="#" className="hover:text-[#FE7743] transition">
                 About Us
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-indigo-400 transition">
+              <a href="#" className="hover:text-[#FE7743] transition">
                 Blog
               </a>
             </li>
@@ -78,17 +78,17 @@ const Footer = () => {
           <h3 className="text-white text-lg font-semibold mb-6">Resources</h3>
           <ul className="space-y-3">
             <li>
-              <a href="#" className="hover:text-indigo-400 transition">
+              <a href="#" className="hover:text-[#FE7743] transition">
                 Contact
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-indigo-400 transition">
+              <a href="#" className="hover:text-[#FE7743] transition">
                 Privacy Policy
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-indigo-400 transition">
+              <a href="#" className="hover:text-[#FE7743] transition">
                 Terms of Service
               </a>
             </li>
