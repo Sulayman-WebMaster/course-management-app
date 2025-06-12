@@ -42,8 +42,12 @@
 
 
 - Enrolled Courses  
-  ![]([https://via.placeholder.com/900x500?text=Enrolled+Courses](https://i.postimg.cc/vHtCsKT6/cf235036-51b4-455b-9f85-534327928ee2.png))
+  ![](https://via.placeholder.com/900x500?text=Enrolled+Courses](https://i.postimg.cc/vHtCsKT6/cf235036-51b4-455b-9f85-534327928ee2.png))
 
+
+Author: Sulayman
+Email: developer.sulayman@gmail.com
+Web: www.developer-sulayman.online
 ---
 
 ## 📦 Getting Started
@@ -57,6 +61,4 @@ npm install
 npm run dev
 
 
-Author: Sulayman
-Email: developer.sulayman@gmail.com
-Web: www.developer-sulayman.online
+
