@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import useSecureAxios from '../Hooks/useSecureAxios';
-import { useNavigate } from 'react-router';
-import { toast } from 'react-toastify';
 import axios from 'axios';
 
 const Courses = () => {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
 
  useEffect(() => {
     axios.get(`${import.meta.env.VITE_BASE_URI}/api/courses`)

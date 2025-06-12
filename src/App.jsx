@@ -6,7 +6,7 @@ import { ToastContainer } from 'react-toastify';
 
 const App = () => {
   return (
-   <div className='mx-auto max-w-6xl montserrat-base'>
+   <div className='mx-auto max-w-7xl montserrat-base'>
       <ToastContainer />
      <Header/>
      <Outlet/>

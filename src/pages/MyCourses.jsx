@@ -20,7 +20,7 @@ const MyCourses = () => {
       const res = await axiosSecure.get(`/api/mycourses/email?email=${user.email}`);
       setCourses(res.data.courses || []);
     } catch (err) {
-      toast.error('Failed to fetch your courses');
+     
     } finally {
       setLoading(false);
     }

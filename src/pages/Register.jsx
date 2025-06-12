@@ -1,9 +1,11 @@
-import React, { use, useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate, useLocation } from 'react-router';
 import { updateProfile } from 'firebase/auth';
 
 import { toast } from 'react-toastify';  
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
+import { 
+  Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter 
+} from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
@@ -11,12 +13,14 @@ import { AuthContext } from '../Provider/AuthProvider';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Register = () => {
-  const {createUser,user,setUser} = use(AuthContext)
-    const [showPassword, setShowPassword] = useState(false);
-    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  
-    const togglePassword = () => setShowPassword(!showPassword);
-    const toggleConfirmPassword = () => setShowConfirmPassword(!showConfirmPassword);
+  const { createUser, user, setUser } = useContext(AuthContext);
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const togglePassword = () => setShowPassword(!showPassword);
+  const toggleConfirmPassword = () => setShowConfirmPassword(!showConfirmPassword);
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -27,6 +31,7 @@ const Register = () => {
     password: '',
     confirmPassword: '',
   });
+
   const [loading, setLoading] = useState(false);
 
   const from = location.state?.from?.pathname || '/';
@@ -68,7 +73,7 @@ const Register = () => {
     try {
       setLoading(true);
       const userCredential = await createUser(email, password);
-        setUser(userCredential.user);
+      setUser(userCredential.user);
       await updateProfile(userCredential.user, {
         displayName: name,
         photoURL: photoURL || null,
@@ -81,7 +86,6 @@ const Register = () => {
     } finally {
       setLoading(false);
     }
-    console.log(user)
   };
 
   return (
@@ -96,53 +100,91 @@ const Register = () => {
 
         <form onSubmit={handleSubmit}>
           <CardContent className="space-y-4">
-            {/* Inputs here */}
             <div>
               <Label htmlFor="name">Name</Label>
-              <Input id="name" name="name" type="text" placeholder="Your full name" value={formData.name} onChange={handleChange} required />
+              <Input
+                id="name"
+                name="name"
+                type="text"
+                placeholder="Your full name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
             </div>
+
             <div>
               <Label htmlFor="photoURL">Photo URL (optional)</Label>
-              <Input id="photoURL" name="photoURL" type="url" placeholder="https://example.com/photo.jpg" value={formData.photoURL} onChange={handleChange} />
+              <Input
+                id="photoURL"
+                name="photoURL"
+                type="url"
+                placeholder="https://example.com/photo.jpg"
+                value={formData.photoURL}
+                onChange={handleChange}
+              />
             </div>
+
             <div>
               <Label htmlFor="email">Email</Label>
-              <Input id="email" name="email" type="email" placeholder="you@example.com" value={formData.email} onChange={handleChange} required />
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="you@example.com"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
             </div>
-             <div className="relative">
-                        <Label htmlFor="password">Password</Label>
-                        <Input
-                          id="password"
-                          type={showPassword ? 'text' : 'password'}
-                          placeholder="Enter your password"
-                        />
-                        <button
-                          type="button"
-                          onClick={togglePassword}
-                          className="absolute right-3 top-6 text-gray-500 hover:text-[#FE7743]"
-                        >
-                          {showPassword ? <FaEyeSlash /> : <FaEye />}
-                        </button>
-                      </div>
+
             <div className="relative">
-                       <Label htmlFor="confirmPassword">Confirm Password</Label>
-                       <Input
-                         id="confirmpassword"
-                         type={showConfirmPassword ? 'text' : 'password'}
-                         placeholder="Enter your password"
-                       />
-                       <button
-                         type="button"
-                         onClick={toggleConfirmPassword}
-                         className="absolute right-3 top-6 text-gray-500 hover:text-[#FE7743]"
-                       >
-                         {showPassword ? <FaEyeSlash /> : <FaEye />}
-                       </button>
-                     </div>
+              <Label htmlFor="password">Password</Label>
+              <Input
+                id="password"
+                name="password"
+                type={showPassword ? 'text' : 'password'}
+                placeholder="Enter your password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+              />
+              <button
+                type="button"
+                onClick={togglePassword}
+                className="absolute right-3 top-6 text-gray-500 hover:text-[#FE7743]"
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </button>
+            </div>
+
+            <div className="relative">
+              <Label htmlFor="confirmPassword">Confirm Password</Label>
+              <Input
+                id="confirmPassword"
+                name="confirmPassword"
+                type={showConfirmPassword ? 'text' : 'password'}
+                placeholder="Confirm your password"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                required
+              />
+              <button
+                type="button"
+                onClick={toggleConfirmPassword}
+                className="absolute right-3 top-6 text-gray-500 hover:text-[#FE7743]"
+              >
+                {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+              </button>
+            </div>
           </CardContent>
 
           <CardFooter className="flex flex-col space-y-4 mt-4">
-            <Button type="submit" className="w-full bg-[#FE7743] hover:bg-[#e86635] text-white" disabled={loading}>
+            <Button
+              type="submit"
+              className="w-full bg-[#FE7743] hover:bg-[#e86635] text-white"
+              disabled={loading}
+            >
               {loading ? 'Registering...' : 'Register'}
             </Button>
           </CardFooter>

@@ -141,11 +141,11 @@ const Course = () => {
                 Unenroll
               </>
             ) : isFull ? (
-              'Course Full'
+              'No seats left'
             ) : (
               <>
-                <FaUserPlus />
-                Enroll Now
+                <FaUserPlus className='text-2xl mr-2'/>
+                Enroll Now Only {  course.totalSeats - course.enrolledUsers.length} Seat Left!
               </>
             )}
           </Button>
