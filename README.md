@@ -52,7 +52,7 @@ Sulayman
 📧 Email: developer.sulayman@gmail.com
 
 ```bash
-git clone https://github.com/your-username/shikhun.git
+git clone https://github.com/Programming-Hero-Web-Course4/b11a11-client-side-Sulayman-WebMaster
 cd shikhun
 npm install
 npm run dev
