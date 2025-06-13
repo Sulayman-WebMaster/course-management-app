@@ -19,15 +19,25 @@ const Home = () => {
   const popularRef = useRef(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    axios.get(`${import.meta.env.VITE_BASE_URI}/api/latest-courses`)
-      .then(res => setLatestCourses(res.data.courses || []))
-      .catch(console.error);
+useEffect(() => {
+  axios.get(`${import.meta.env.VITE_BASE_URI}/api/latest-courses`)
+    .then(res => setLatestCourses(res.data.courses || []))
+    .catch(console.error);
+}, []);
 
+useEffect(() => {
+  const fetchPopularCourses = () => {
     axios.get(`${import.meta.env.VITE_BASE_URI}/api/courses/popular`)
       .then(res => setPopularCourses(res.data.courses || []))
       .catch(console.error);
-  }, []);
+  };
+
+  fetchPopularCourses();
+  const interval = setInterval(fetchPopularCourses, 10000);
+
+  return () => clearInterval(interval);
+}, []);
+
 
   useEffect(() => {
     const animateCards = (targetRef) => {
