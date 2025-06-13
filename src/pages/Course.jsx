@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useRef } from 'react';
-import { useParams, useNavigate } from 'react-router';
+import { useParams, useNavigate, Link } from 'react-router';
 import axios from 'axios';
 import Button from '../components/Button';
 import { AuthContext } from '../Provider/AuthProvider';
@@ -174,6 +174,7 @@ const Course = () => {
           {allCourses
             .filter((c) => c._id !== course._id)
             .map((c) => (
+              <Link  to={`/course/${c._id}`} key={c._id} className="h-full">
               <div
                 key={c._id}
                 className="w-80 bg-white border border-orange-200 rounded-xl shadow-md flex-shrink-0 flex flex-col justify-between"
@@ -194,6 +195,7 @@ const Course = () => {
                   </div>
                 </div>
               </div>
+              </Link>
             ))}
         </div>
         <button

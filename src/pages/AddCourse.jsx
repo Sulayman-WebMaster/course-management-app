@@ -138,7 +138,6 @@ const AddCoursePage = () => {
                 onChange={e => setTotalSeats(e.target.value)}
                 className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#FE7743]"
                 placeholder="Enter total seats available"
-                min="10"
                 required
             />
         </div>
