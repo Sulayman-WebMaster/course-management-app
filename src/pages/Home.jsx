@@ -71,7 +71,7 @@ const Home = () => {
     <div>
       <DynamicTitle title="Home - Learn with Us" />
       <HeroSlider />
-
+      
       {/* Latest Courses Section */}
       <section ref={latestRef} className="py-10 px-6 max-w-7xl mx-auto bg-gray-50 rounded-3xl my-16">
         <h2 className="text-3xl font-extrabold mb-6 text-center text-gray-900">Latest Courses</h2>
