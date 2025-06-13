@@ -129,10 +129,10 @@ const Login = () => {
         <CardFooter className="flex flex-col space-y-4">
           <p className="text-sm text-center text-gray-500">
             Don't have an account?{' '}
-            <Link to="/register" className="text-[#FE7743] hover:underline">Register</Link>
+            <Link to="/register"  state={{ from: location.state?.from || '/' }} replace className="text-[#FE7743] hover:underline">Register</Link>
           </p>
 
-          {/* Social Buttons */}
+          
           <div className="flex space-x-4 justify-center mt-2">
             <Button
               variant="outline"
