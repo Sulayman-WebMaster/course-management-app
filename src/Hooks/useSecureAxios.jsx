@@ -7,7 +7,7 @@ const useSecureAxios = () => {
 
   const axiosInstance = useMemo(() => {
     const instance = axios.create({
-      baseURL: 'http://localhost:8000',
+      baseURL: 'https://shikuncms.vercel.app',
       headers: {
         'Content-Type': 'application/json',
       },
