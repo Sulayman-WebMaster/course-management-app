@@ -1,19 +1,57 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import DynamicTitle from '../components/DynamicTitle';
-import { Link } from 'react-router'; 
+import { Link } from 'react-router';
 
 const Courses = () => {
   const [courses, setCourses] = useState([]);
+  const [filteredCourses, setFilteredCourses] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [sortBy, setSortBy] = useState('newest');
 
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_BASE_URI}/api/courses`)
-      .then((res) => setCourses(res.data.courses || []))
+      .then((res) => {
+        const data = res.data.courses || [];
+        setCourses(data);
+        setFilteredCourses(data);
+      })
       .catch(console.error)
       .finally(() => setLoading(false));
   }, []);
+
+  useEffect(() => {
+    let filtered = [...courses];
+
+    // Search
+    if (searchTerm) {
+      filtered = filtered.filter((course) =>
+        course.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
+    // Sorting
+    switch (sortBy) {
+      case 'az':
+        filtered.sort((a, b) => a.title.localeCompare(b.title));
+        break;
+      case 'za':
+        filtered.sort((a, b) => b.title.localeCompare(a.title));
+        break;
+      case 'newest':
+        filtered.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        break;
+      case 'oldest':
+        filtered.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+        break;
+      default:
+        break;
+    }
+
+    setFilteredCourses(filtered);
+  }, [searchTerm, sortBy, courses]);
 
   if (loading) {
     return (
@@ -28,13 +66,35 @@ const Courses = () => {
       <DynamicTitle title="All Courses" />
       <h2 className="text-4xl font-extrabold text-[#FE7743] mb-8 text-center">Explore Courses</h2>
 
-      {courses.length === 0 ? (
+      {/* Search + Sort Controls */}
+      <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-8">
+        <input
+          type="text"
+          placeholder="Search courses by title..."
+          className="w-full md:w-1/2 px-4 py-2 border border-orange-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+
+        <select
+          value={sortBy}
+          onChange={(e) => setSortBy(e.target.value)}
+          className="w-full md:w-1/4 px-4 py-2 border border-orange-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
+        >
+          <option value="newest">Newest First</option>
+          <option value="oldest">Oldest First</option>
+          <option value="az">A–Z</option>
+          <option value="za">Z–A</option>
+        </select>
+      </div>
+
+      {filteredCourses.length === 0 ? (
         <div className="text-center bg-orange-50 text-orange-800 p-6 rounded-lg shadow">
-          <p className="text-lg">No courses available at the moment.</p>
+          <p className="text-lg">No courses found.</p>
         </div>
       ) : (
         <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2">
-          {courses.map((course) => (
+          {filteredCourses.map((course) => (
             <Link to={`/course/${course._id}`} key={course._id} className="h-full">
               <div className="h-full flex bg-white rounded-2xl shadow-md hover:shadow-lg transition duration-300 border border-orange-100 overflow-hidden">
                 {/* Text content */}
