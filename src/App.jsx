@@ -12,8 +12,11 @@ const App = () => {
       <ToastContainer />
       <CustomCursor/>
 
+       <div className='w-full shadow-md bg-gradient-to-br from-white to-blue-50   sticky top-0  z-50'>
+        <Header />        
+      </div>
+
       <div className='mx-auto max-w-7xl montserrat-base bg-white min-h-screen'>
-        <Header />
         <Outlet />
       </div>
       <div className='w-full shadow-md'>
