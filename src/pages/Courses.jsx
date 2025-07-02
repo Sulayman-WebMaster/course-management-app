@@ -62,16 +62,16 @@ const Courses = () => {
   }
 
   return (
-    <div className="max-w-7xl mx-auto p-6">
+    <div className="max-w-7xl mx-auto p-6 text-gray-800 dark:text-gray-100">
       <DynamicTitle title="All Courses" />
-      <h2 className="text-4xl font-extrabold text-[#FE7743] mb-8 text-center">Explore Courses</h2>
+      <h2 className="text-4xl font-extrabold text-[#FE7743] dark:text-orange-400 mb-8 text-center">Explore Courses</h2>
 
       {/* Search + Sort Controls */}
       <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-8">
         <input
           type="text"
           placeholder="Search courses by title..."
-          className="w-full md:w-1/2 px-4 py-2 border border-orange-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
+          className="w-full md:w-1/2 px-4 py-2 border border-orange-300 dark:border-gray-600 rounded-md shadow-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-orange-400"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
@@ -79,7 +79,7 @@ const Courses = () => {
         <select
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value)}
-          className="w-full md:w-1/4 px-4 py-2 border border-orange-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
+          className="w-full md:w-1/4 px-4 py-2 border border-orange-300 dark:border-gray-600 rounded-md shadow-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-orange-400"
         >
           <option value="newest">Newest First</option>
           <option value="oldest">Oldest First</option>
@@ -89,25 +89,27 @@ const Courses = () => {
       </div>
 
       {filteredCourses.length === 0 ? (
-        <div className="text-center bg-orange-50 text-orange-800 p-6 rounded-lg shadow">
+        <div className="text-center bg-orange-50 dark:bg-gray-800 text-orange-800 dark:text-orange-300 p-6 rounded-lg shadow">
           <p className="text-lg">No courses found.</p>
         </div>
       ) : (
         <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2">
           {filteredCourses.map((course) => (
             <Link to={`/course/${course._id}`} key={course._id} className="h-full">
-              <div className="h-full flex bg-white rounded-2xl shadow-md hover:shadow-lg transition duration-300 border border-orange-100 overflow-hidden">
+              <div className="h-full flex bg-white dark:bg-gray-900 rounded-2xl shadow-md hover:shadow-lg transition duration-300 border border-orange-100 dark:border-gray-700 overflow-hidden">
                 {/* Text content */}
                 <div className="flex-1 p-6 flex flex-col justify-between">
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-800 mb-2">{course.title}</h3>
-                    <p className="text-gray-600 mb-4 text-sm">
+                    <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">
+                      {course.title}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">
                       {course.description.length > 100
                         ? course.description.slice(0, 100) + '...'
                         : course.description}
                     </p>
                   </div>
-                  <div className="flex justify-between text-sm text-gray-700 font-medium mt-auto">
+                  <div className="flex justify-between text-sm text-gray-700 dark:text-gray-400 font-medium mt-auto">
                     <span>Duration: {course.duration}</span>
                     <span>Seats: {course.totalSeats}</span>
                   </div>

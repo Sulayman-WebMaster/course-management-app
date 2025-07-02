@@ -102,7 +102,7 @@ const Course = () => {
   const isFull = course.enrolledUsers.length >= course.totalSeats;
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-16">
+    <div className="max-w-6xl mx-auto px-6 py-16 text-gray-800 dark:text-gray-100">
       <DynamicTitle title={course.title} />
 
       <div className="flex flex-col md:flex-row gap-10 mb-16">
@@ -115,10 +115,10 @@ const Course = () => {
         </div>
 
         <div className="md:w-1/2 space-y-6">
-          <h1 className="text-4xl font-extrabold text-[#FE7743]">{course.title}</h1>
-          <p className="text-gray-700 text-lg leading-relaxed">{course.description}</p>
+          <h1 className="text-4xl font-extrabold text-[#FE7743] dark:text-orange-400">{course.title}</h1>
+          <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">{course.description}</p>
 
-          <div className="space-y-2 text-gray-700 text-lg">
+          <div className="space-y-2 text-gray-700 dark:text-gray-300 text-lg">
             <p className="flex items-center gap-2"><FaClock className="text-[#FE7743]" /><strong>Duration:</strong> {course.duration}</p>
             <p className="flex items-center gap-2"><FaUsers className="text-[#FE7743]" /><strong>Enrolled:</strong> {course.enrolledUsers.length} / {course.totalSeats}</p>
             <p className="flex items-center gap-2"><FaChalkboardTeacher className="text-[#FE7743]" /><strong>Instructor:</strong> {course.createdBy.name}</p>
@@ -158,11 +158,11 @@ const Course = () => {
       </div>
 
       {/* Explore More */}
-      <h2 className="text-2xl font-bold text-left text-[#FE7743] mb-6">Explore More Courses</h2>
+      <h2 className="text-2xl font-bold text-left text-[#FE7743] dark:text-orange-400 mb-6">Explore More Courses</h2>
       <div className="relative">
         <button
           onClick={() => scrollCards('left')}
-          className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white border rounded-full shadow-lg p-2 hover:bg-orange-100"
+          className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white dark:bg-gray-700 border dark:border-gray-500 rounded-full shadow-lg p-2 hover:bg-orange-100 dark:hover:bg-orange-500/20 transition"
         >
           <MdChevronLeft size={28} />
         </button>
@@ -174,33 +174,30 @@ const Course = () => {
           {allCourses
             .filter((c) => c._id !== course._id)
             .map((c) => (
-              <Link  to={`/course/${c._id}`} key={c._id} className="h-full">
-              <div
-                key={c._id}
-                className="w-80 bg-white border border-orange-200 rounded-xl shadow-md flex-shrink-0 flex flex-col justify-between"
-              >
-                <img
-                  src={c.imageURL || 'https://via.placeholder.com/300x180'}
-                  alt={c.title}
-                  className="w-full h-48 object-cover rounded-t-xl"
-                />
-                <div className="p-4 space-y-2">
-                  <h3 className="text-lg font-bold text-gray-800">{c.title}</h3>
-                  <p className="text-sm text-gray-600">
-                    {c.description?.slice(0, 70) || 'No description'}...
-                  </p>
-                  <div className="text-sm text-gray-500 flex justify-between mt-2">
-                    <span>{c.duration}</span>
-                    <span>{c.totalSeats} Seats</span>
+              <Link to={`/course/${c._id}`} key={c._id} className="h-full">
+                <div className="w-80 bg-white dark:bg-gray-800 border border-orange-200 dark:border-gray-600 rounded-xl shadow-md flex-shrink-0 flex flex-col justify-between">
+                  <img
+                    src={c.imageURL || 'https://via.placeholder.com/300x180'}
+                    alt={c.title}
+                    className="w-full h-48 object-cover rounded-t-xl"
+                  />
+                  <div className="p-4 space-y-2">
+                    <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100">{c.title}</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-300">
+                      {c.description?.slice(0, 70) || 'No description'}...
+                    </p>
+                    <div className="text-sm text-gray-500 dark:text-gray-400 flex justify-between mt-2">
+                      <span>{c.duration}</span>
+                      <span>{c.totalSeats} Seats</span>
+                    </div>
                   </div>
                 </div>
-              </div>
               </Link>
             ))}
         </div>
         <button
           onClick={() => scrollCards('right')}
-          className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white border rounded-full shadow-lg p-2 hover:bg-orange-100"
+          className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white dark:bg-gray-700 border dark:border-gray-500 rounded-full shadow-lg p-2 hover:bg-orange-100 dark:hover:bg-orange-500/20 transition"
         >
           <MdChevronRight size={28} />
         </button>

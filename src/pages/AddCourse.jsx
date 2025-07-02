@@ -4,7 +4,6 @@ import { toast } from 'react-toastify';
 import useSecureAxios from '../Hooks/useSecureAxios';
 import DynamicTitle from '../components/DynamicTitle';
 
-
 const AddCoursePage = () => {
   const { user } = useContext(AuthContext);
   const axios = useSecureAxios(); 
@@ -16,12 +15,10 @@ const AddCoursePage = () => {
   const [loading, setLoading] = useState(false);
   const [totalSeats, setTotalSeats] = useState(10);
 
- 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!title || !description ||  !duration || !totalSeats) {
+    if (!title || !description || !duration || !totalSeats) {
       toast.error('Please fill in all fields.');
       return;
     }
@@ -31,7 +28,7 @@ const AddCoursePage = () => {
     const payload = {
       title,
       description,
-      imageURL:imageURL || 'https://i.postimg.cc/HWFMBhBX/image.png',
+      imageURL: imageURL || 'https://i.postimg.cc/HWFMBhBX/image.png',
       duration,
       totalSeats,
       createdBy: {
@@ -60,12 +57,13 @@ const AddCoursePage = () => {
       setLoading(false);
     }
   };
-  
 
   return (
-    <div className="max-w-xl mx-auto p-6 bg-white shadow-md rounded-md mt-10">
-       <DynamicTitle title="Create a new Course" />
-      <h2 className="text-3xl font-semibold mb-6 text-[#FE7743]">Add New Course</h2>
+    <div className="max-w-xl mx-auto p-6 bg-white dark:bg-gray-900 shadow-md dark:shadow-lg rounded-md mt-10 text-gray-800 dark:text-gray-100">
+      <DynamicTitle title="Create a new Course" />
+      <h2 className="text-3xl font-semibold mb-6 text-[#FE7743] dark:text-orange-400">
+        Add New Course
+      </h2>
       <form onSubmit={handleSubmit} className="space-y-5">
         <div>
           <label htmlFor="title" className="block font-medium mb-1">
@@ -76,7 +74,7 @@ const AddCoursePage = () => {
             type="text"
             value={title}
             onChange={e => setTitle(e.target.value)}
-            className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#FE7743]"
+            className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#FE7743]"
             placeholder="Enter course title"
             required
           />
@@ -90,7 +88,7 @@ const AddCoursePage = () => {
             id="description"
             value={description}
             onChange={e => setDescription(e.target.value)}
-            className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#FE7743]"
+            className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#FE7743]"
             placeholder="Enter a brief description"
             rows={3}
             required
@@ -106,9 +104,8 @@ const AddCoursePage = () => {
             type="url"
             value={imageURL}
             onChange={e => setImageURL(e.target.value)}
-            className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#FE7743]"
+            className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#FE7743]"
             placeholder="https://example.com/image.jpg"
-          
           />
         </div>
 
@@ -121,25 +118,25 @@ const AddCoursePage = () => {
             type="text"
             value={duration}
             onChange={e => setDuration(e.target.value)}
-            className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#FE7743]"
+            className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#FE7743]"
             placeholder="Enter course duration"
             required
           />
         </div>
 
         <div>
-            <label htmlFor="totalSeats" className="block font-medium mb-1">
-                Total Seats
-            </label>
-            <input
-                id="totalSeats"
-                type="number"
-                value={totalSeats}
-                onChange={e => setTotalSeats(e.target.value)}
-                className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#FE7743]"
-                placeholder="Enter total seats available"
-                required
-            />
+          <label htmlFor="totalSeats" className="block font-medium mb-1">
+            Total Seats
+          </label>
+          <input
+            id="totalSeats"
+            type="number"
+            value={totalSeats}
+            onChange={e => setTotalSeats(e.target.value)}
+            className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#FE7743]"
+            placeholder="Enter total seats available"
+            required
+          />
         </div>
 
         <button
