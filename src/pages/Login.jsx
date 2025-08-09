@@ -51,6 +51,8 @@ const Login = () => {
       setLoading(false);
     }
   };
+  // handle GitHub login
+  // This function will be called when the user clicks the GitHub login button
 
   const handleGithubLogin = async () => {
     if (loading) return;  
