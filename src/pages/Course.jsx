@@ -195,7 +195,12 @@ const Course = () => {
               </Link>
             ))}
         </div>
-        
+        <button
+          onClick={() => scrollCards('right')}
+          className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white dark:bg-gray-700 border dark:border-gray-500 rounded-full shadow-lg p-2 hover:bg-orange-100 dark:hover:bg-orange-500/20 transition"
+        >
+          <MdChevronRight size={28} />
+        </button>
       </div>
     </div>
   );
