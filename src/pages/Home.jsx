@@ -11,8 +11,9 @@ import homeAnimation from '../assests/home-animation.json';
 import sectionAnimation from '../assests/section-animation.json';
 import whyAnimation from '../assests/why-us.json';
 import DynamicTitle from '../components/DynamicTitle';
-import { FaBolt, FaStar, FaFireAlt } from 'react-icons/fa';
+import {  FaStar, FaFireAlt } from 'react-icons/fa';
 import { MdLocalOffer } from 'react-icons/md';
+import { AiOutlineClockCircle } from 'react-icons/ai';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -77,7 +78,7 @@ const Home = () => {
         className="py-10 px-6 max-w-7xl mx-auto bg-gray-50 dark:bg-gray-800 rounded-3xl my-16"
       >
         <h2 className="text-3xl font-extrabold mb-6 text-center flex items-center justify-center gap-2 text-gray-900 dark:text-gray-100">
-          <FaBolt className="text-yellow-500" /> Latest Courses
+          <AiOutlineClockCircle  className="text-orange-500 font-bold text-4xl" /> Latest Courses
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {latestCourses.map(course => (
