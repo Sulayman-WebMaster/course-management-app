@@ -10,7 +10,7 @@ import Course from "../pages/Course";
 import EditCourses from "../pages/EditCourses";
 import Enrollment from "../pages/Enrollment";
 import MyCourses from "../pages/MyCourses";
-import Courses from "../pages/Courses";
+
 export const router = createBrowserRouter([
     {
         path: "/",
