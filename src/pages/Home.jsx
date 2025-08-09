@@ -13,7 +13,7 @@ import whyAnimation from '../assests/why-us.json';
 import DynamicTitle from '../components/DynamicTitle';
 import {  FaStar, FaFireAlt } from 'react-icons/fa';
 import { MdLocalOffer } from 'react-icons/md';
-import { AiOutlineClockCircle } from 'react-icons/ai';
+import { AiFillFire, AiOutlineClockCircle } from 'react-icons/ai';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -113,7 +113,7 @@ const Home = () => {
         className="py-10 px-6 max-w-7xl mx-auto bg-gray-50 dark:bg-gray-800 rounded-3xl my-16"
       >
         <h2 className="text-3xl font-extrabold mb-6 text-center flex items-center justify-center gap-2 text-gray-900 dark:text-gray-100">
-          <FaStar className="text-orange-500" /> Popular Courses
+          <AiFillFire  className="text-orange-500" /> Popular Courses
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {popularCourses.map(course => (
@@ -161,7 +161,7 @@ const Home = () => {
       <section className="w-full bg-gradient-to-r from-yellow-100 via-orange-100 to-pink-200 dark:from-yellow-700 dark:via-orange-700 dark:to-pink-700 py-16 px-6 text-center rounded-2xl shadow-xl mt-20">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-5xl md:text-6xl font-extrabold text-orange-600 dark:text-orange-400 drop-shadow mb-6 flex items-center justify-center gap-4">
-            <MdLocalOffer className="text-pink-500 dark:text-pink-400" /> Summer Sale: 50% OFF
+            <MdLocalOffer className="text-orange-500 dark:text-orange-400" /> Summer Sale: 50% OFF
           </h2>
           <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8">
             Get 50% discount on <strong>ALL courses</strong> this summer. Start learning for half the price!
@@ -183,10 +183,10 @@ const Home = () => {
         <div className="w-full md:w-1/2 text-center md:text-left">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-gray-100">Why Learn With Us?</h2>
           <ul className="text-gray-700 dark:text-gray-300 text-lg md:text-xl space-y-3">
-            <li><FaFireAlt className="inline-block mr-2 text-red-500" /> Industry-expert instructors</li>
-            <li><FaFireAlt className="inline-block mr-2 text-red-500" /> Real-world projects</li>
-            <li><FaFireAlt className="inline-block mr-2 text-red-500" /> Lifetime access to all courses</li>
-            <li><FaFireAlt className="inline-block mr-2 text-red-500" /> Certifications & support</li>
+            <li><FaFireAlt className="inline-block mr-2 text-orange-500" /> Industry-expert instructors</li>
+            <li><FaFireAlt className="inline-block mr-2 text-orange-500" /> Real-world projects</li>
+            <li><FaFireAlt className="inline-block mr-2 text-orange-500" /> Lifetime access to all courses</li>
+            <li><FaFireAlt className="inline-block mr-2 text-orange-500" /> Certifications & support</li>
           </ul>
           <Link to="/" className="inline-block mt-6">
             <Button>Learn More</Button>
